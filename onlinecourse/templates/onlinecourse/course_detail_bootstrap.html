@@ -61,16 +61,16 @@
 
       <form id="questionform" action="/" method="post">
 
-        {% for question in course.question %}
+        {% for question in course.question_set.all %}
         <div class="card mt-1">
           <div class="card-header">
-            <h5>{{ question.question_content }}1</h5>
+            <h5>{{ question.question_content }}</h5>
           </div>
           {% csrf_token %}
 
           <div class="form-group">
             
-            {% for choice in question %}
+            {% for choice in question.choice_set.all %}
             <div class="form-check">
               <label class="form-check-label">
                 <input type="checkbox" name="choice_{{choice.id}}" class="form-check-input" id="{{choice.id}}"
